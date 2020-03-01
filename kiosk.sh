@@ -1,4 +1,4 @@
-sudo touch /home/pi/kiosk.sh
+sudo nano /home/pi/kiosk.sh
 sudo chmod +x /home/pi/kiosk.sh
 
 printf "\n\n### CREATED kiosk.sh Script ####\n\n"
