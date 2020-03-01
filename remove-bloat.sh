@@ -20,8 +20,10 @@ sudo apt-get install samba samba-common-bin  -y
 
 printf "########## PASSED SAMBA INSTALL\n"
 
+sudo mkdir /home/pi/swap
+
 #Setup share on Samba
-cp /etc/samba/smb.conf /home/pi/
+cp /etc/samba/smb.conf /home/pi/swap/
 sudo echo '[global]' >> /home/pi/smb.conf
 sudo echo 'netbios name = Pi' >> /home/pi/smb.conf
 sudo echo 'server string = The Pi File Center' >> /home/pi/smb.conf
@@ -34,7 +36,7 @@ sudo echo 'writeable=Yes' >> /home/pi/smb.conf
 sudo echo 'create mask=0777' >> /home/pi/smb.conf
 sudo echo 'directory mask=0777' >> /home/pi/smb.conf
 sudo echo 'public=no' >> /home/pi/smb.conf
-sudo cp /home/pi/smb.conf /etc/samba/smb.conf 
+sudo cp /home/pi/swap/smb.conf /etc/samba/smb.conf 
 
 printf "########## PASSED WRITING SAMBA CONFIG TO /etc/samba/smb.conf\n"
 printf "########## ADD PASSWORD FOR SAMBA\n"
@@ -60,7 +62,7 @@ sudo touch /home/pi/kiosk.sh
 #sudo chmod +x /home/pi/kiosk.sh
 
 printf "### CREATED kiosk.sh Script ####\n"
-cp /home/pi/smb.conf /home/
+cp /home/pi/smb.conf /home/pi/swap/
 sudo echo '#!/bin/bash' >> /home/pi/kiosk.sh
 sudo echo 'xset s noblank' >> /home/pi/kiosk.sh
 sudo echo 'xset s off' >> /home/pi/kiosk.sh
@@ -77,11 +79,11 @@ sudo echo 'while true; do' >> /home/pi/kiosk.sh
 sudo echo '   xdotool keydown ctrl+Tab; xdotool keyup ctrl+Tab;' >> /home/pi/kiosk.sh
 sudo echo '   sleep 10' >> /home/pi/kiosk.sh
 sudo echo 'done' >> /home/pi/kiosk.sh
-sudo cp /home/smb.conf /home/pi/
+sudo cp /home/pi/swap/smb.conf /home/pi/
 
 echo $DISPLAY
 
-cp /lib/systemd/system/kiosk.service /home/pi/
+cp /lib/systemd/system/kiosk.service /home/pi/swap/
 sudo echo '[Unit]' >> /lib/systemd/system/kiosk.service
 sudo echo 'Description=Chromium Kiosk' >> /lib/systemd/system/kiosk.service
 sudo echo 'Wants=graphical.target' >> /lib/systemd/system/kiosk.service
@@ -98,7 +100,7 @@ sudo echo 'Group=pi' >> /lib/systemd/system/kiosk.service
 sudo echo ' ' >> /lib/systemd/system/kiosk.service
 sudo echo '[Install]' >> /lib/systemd/system/kiosk.service
 sudo echo 'WantedBy=graphical.target' >> /lib/systemd/system/kiosk.service
-sudo cp /home/pi/kiosk.service /lib/systemd/system/
+sudo cp /home/pi/swap/kiosk.service /lib/systemd/system/
 
 #Enable Kiosk Service
 sudo systemctl enable kiosk.service
