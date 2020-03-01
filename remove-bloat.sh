@@ -19,8 +19,6 @@ pass="kongo78"
 sudo apt-get install samba samba-common-bin  -y
 
 printf "########## PASSED SAMBA INSTALL\n"
-sudo echo "kongo78"
-sudo echo "kongo78"  #| smbpasswd -s -a $SUDO_USER
 #MK Dir Share
 #mkdir ~/Share
 sudo chmod +x /etc/samba/smb.conf
@@ -39,10 +37,10 @@ sudo echo 'public=no' >> /etc/samba/smb.conf
 
 printf "########## PASSED WRITING SAMBA CONFIG TO /etc/samba/smb.conf\n"
 printf "########## ADD PASSWORD FOR SAMBA\n"
-#Set samba password
 
-sudo smbpasswd -a pi
-printf "########## RESTARTING SAMBA\n"
+#Set samba password
+#sudo smbpasswd -a pi
+printf "########## NO SAMBA PASSWORD\n"
 sudo service smbd restart
 
 #Setup my Pi Kiosk
@@ -57,8 +55,8 @@ sudo apt-get install xdotool unclutter sed  -y
 sudo raspi-config
 
 #Create Kiosk script
-touch /home/pi/kiosk.sh
-chmod +x /home/pi/kiosk.sh
+sudo touch /home/pi/kiosk.sh
+sudo chmod +x /home/pi/kiosk.sh
 printf "### CREATED kiosk.sh Script ####\n"
 
 sudo echo '#!/bin/bash' >> /home/pi/kiosk.sh
