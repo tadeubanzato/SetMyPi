@@ -18,4 +18,8 @@ sudo apt-get install samba samba-common-bin
 #MK Dir Share
 mkdir ~/Share
 
+#Setup share on Samba
+echo '[global]' > /etc/samba/smb.conf
+echo 'netbios name = Pi' > /etc/samba/smb.conf
+
 
