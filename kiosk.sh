@@ -1,10 +1,4 @@
 sudo nano /home/pi/kiosk.sh
-sudo chmod +x /home/pi/kiosk.sh
-
-printf "\n\n### CREATED kiosk.sh Script ####\n\n"
-
-#sudo cp /home/pi/kiosk.sh /tmp/
-printf "\n\n### Copied kiosk.sh to TMP Script ####\n\n"
 
 sudo echo '#!/bin/bash'
 sudo echo 'xset s noblank'
