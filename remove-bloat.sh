@@ -78,7 +78,7 @@ sudo echo 'while true; do' >> /tmp/kiosk.sh
 sudo echo '   xdotool keydown ctrl+Tab; xdotool keyup ctrl+Tab;' >> /tmp/kiosk.sh
 sudo echo '   sleep 10' >> /tmp/kiosk.sh
 sudo echo 'done' >> /tmp/kiosk.sh
-sudo cp /tmp/smb.conf /home/pi/
+sudo cp /tmp/kiosk.sh /home/pi/
 
 echo $DISPLAY
 
