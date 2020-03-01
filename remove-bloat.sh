@@ -20,10 +20,10 @@ sudo apt-get install samba samba-common-bin  -y
 
 printf "########## PASSED SAMBA INSTALL\n"
 sudo echo "kongo78"
-sudo echo "kongo78"  | smbpasswd -s -a #$SUDO_USER
+sudo echo "kongo78"  #| smbpasswd -s -a $SUDO_USER
 #MK Dir Share
 #mkdir ~/Share
-
+sudo chmod +x /etc/samba/smb.conf
 #Setup share on Samba
 sudo echo '[global]' >> /etc/samba/smb.conf
 sudo echo 'netbios name = Pi' >> /etc/samba/smb.conf
