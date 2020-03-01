@@ -19,32 +19,32 @@ pass="kongo78"
 sudo apt-get install samba samba-common-bin  -y
 
 printf "########## PASSED SAMBA INSTALL\n"
-#MK Dir Share
-#mkdir ~/Share
-sudo chmod +x /etc/samba/smb.conf
+
 #Setup share on Samba
-sudo echo '[global]' >> /etc/samba/smb.conf
-sudo echo 'netbios name = Pi' >> /etc/samba/smb.conf
-sudo echo 'server string = The Pi File Center' >> /etc/samba/smb.conf
-sudo echo 'workgroup = WORKGROUP' >> /etc/samba/smb.conf
-sudo echo '[HOMEPI]' >> /etc/samba/smb.conf
-sudo echo 'path = /' >> /etc/samba/smb.conf
-sudo echo 'comment = No comment' >> /etc/samba/smb.conf
-sudo echo 'writeable=Yes' >> /etc/samba/smb.conf
-sudo echo 'create mask=0777' >> /etc/samba/smb.conf
-sudo echo 'directory mask=0777' >> /etc/samba/smb.conf
-sudo echo 'public=no' >> /etc/samba/smb.conf
+cp /etc/samba/smb.conf /home/pi/
+sudo echo '[global]' >> /home/pi/smb.conf
+sudo echo 'netbios name = Pi' >> /home/pi/smb.conf
+sudo echo 'server string = The Pi File Center' >> /home/pi/smb.conf
+sudo echo 'workgroup = WORKGROUP' >> /home/pi/smb.conf
+sudo echo '[HOMEPI]' >> /home/pi/smb.conf
+sudo echo 'path = /' >> /home/pi/smb.conf
+sudo echo 'comment = No comment' >> /home/pi/smb.conf
+sudo echo 'writeable=Yes' >> /home/pi/smb.conf
+sudo echo 'create mask=0777' >> /home/pi/smb.conf
+sudo echo 'directory mask=0777' >> /home/pi/smb.conf
+sudo echo 'public=no' >> /home/pi/smb.conf
+sudo cp /home/pi/smb.conf /etc/samba/smb.conf 
 
 printf "########## PASSED WRITING SAMBA CONFIG TO /etc/samba/smb.conf\n"
 printf "########## ADD PASSWORD FOR SAMBA\n"
 
 #Set samba password
 #sudo smbpasswd -a pi
-printf "########## NO SAMBA PASSWORD\n"
+printf "\n\n########## NO SAMBA PASSWORD\n\n"
 sudo service smbd restart
 
 #Setup my Pi Kiosk
-printf "########## SETTING KIOSK MODE\n"
+printf "\n\n\n\n########## SETTING KIOSK MODE\n\n\n\n"
 sudo apt-get purge scratch scratch2 nuscratch sonic-pi idle3 -y
 sudo apt-get purge smartsim java-common -y
 sudo apt-get clean
@@ -57,6 +57,7 @@ sudo raspi-config
 #Create Kiosk script
 sudo touch /home/pi/kiosk.sh
 sudo chmod +x /home/pi/kiosk.sh
+
 printf "### CREATED kiosk.sh Script ####\n"
 
 sudo echo '#!/bin/bash' >> /home/pi/kiosk.sh
@@ -76,7 +77,6 @@ sudo echo '   xdotool keydown ctrl+Tab; xdotool keyup ctrl+Tab;' >> /home/pi/kio
 sudo echo '   sleep 10' >> /home/pi/kiosk.sh
 sudo echo 'done' >> /home/pi/kiosk.sh
 echo $DISPLAY
-
 sudo echo '[Unit]' >> /lib/systemd/system/kiosk.service
 sudo echo 'Description=Chromium Kiosk' >> /lib/systemd/system/kiosk.service
 sudo echo 'Wants=graphical.target' >> /lib/systemd/system/kiosk.service
