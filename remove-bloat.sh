@@ -11,11 +11,14 @@ sudo apt-get autoclean -y
 
 # Update
 sudo apt-get update
+printf "########## PASSED CLEAN 01\n"
+
 
 # Start Samba Instalation -------------
 # Install Samba
-sudo apt-get install samba samba-common-bin
+sudo apt-get install samba samba-common-bin  -y
 
+printf "########## PASSED SAMBA INSTALL\n"
 #MK Dir Share
 #mkdir ~/Share
 
@@ -32,22 +35,29 @@ sudo echo 'create mask=0777' >> /etc/samba/smb.conf
 sudo echo 'directory mask=0777' >> /etc/samba/smb.conf
 sudo echo 'public=no' >> /etc/samba/smb.conf
 
+printf "########## PASSED WRITING SAMBA CONFIG TO /etc/samba/smb.conf\n"
+printf "########## ADD PASSWORD FOR SAMBA\n"
 #Set samba password
+
 sudo smbpasswd -a pi
+printf "########## RESTARTING SAMBA\n"
 sudo service smbd restart
 
 #Setup my Pi Kiosk
+printf "########## SETTING KIOSK MODE\n"
 sudo apt-get purge scratch scratch2 nuscratch sonic-pi idle3 -y
 sudo apt-get purge smartsim java-common -y
 sudo apt-get clean
 sudo apt-get autoremove -y
 sudo apt-get update
 sudo apt-get upgrade
-sudo apt-get install xdotool unclutter sed
+sudo apt-get install xdotool unclutter sed  -y
 sudo raspi-config
 
 #Create Kiosk script
-nano /home/pi/kiosk.sh
+touch /home/pi/kiosk.sh
+chmod +x /home/pi/kiosk.sh
+printf "### CREATED kiosk.sh Script ####\n"
 
 sudo echo '#!/bin/bash' >> /home/pi/kiosk.sh
 sudo echo 'xset s noblank' >> /home/pi/kiosk.sh
