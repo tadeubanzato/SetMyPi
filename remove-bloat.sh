@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Remove bloatware (Wolfram Engine, Libre Office, Minecraft Pi, sonic-pi dillo gpicview penguinspuzzle)
-sudo apt-get remove --purge wolfram-engine libreoffice* scratch* minecraft-pi sonic-pi dillo gpicview penguinspuzzle -y
+sudo apt-get remove --purge libreoffice* minecraft-pi sonic-pi dillo gpicview penguinspuzzle -y
 
 # Autoremove
 sudo apt-get autoremove -y
@@ -12,6 +12,7 @@ sudo apt-get autoclean -y
 # Update
 sudo apt-get update
 
+# Start Samba Instalation -------------
 # Install Samba
 sudo apt-get install samba samba-common-bin
 
@@ -19,7 +20,77 @@ sudo apt-get install samba samba-common-bin
 mkdir ~/Share
 
 #Setup share on Samba
-echo '[global]' > /etc/samba/smb.conf
-echo 'netbios name = Pi' > /etc/samba/smb.conf
+sudo echo '[global]' >> /etc/samba/smb.conf
+sudo echo 'netbios name = Pi' >> /etc/samba/smb.conf
+sudo echo 'server string = The Pi File Center' >> /etc/samba/smb.conf
+sudo echo 'workgroup = WORKGROUP' >> /etc/samba/smb.conf
+sudo echo '[HOMEPI]' >> /etc/samba/smb.conf
+sudo echo 'path = /' >> /etc/samba/smb.conf
+sudo echo 'comment = No comment' >> /etc/samba/smb.conf
+sudo echo 'writeable=Yes' >> /etc/samba/smb.conf
+sudo echo 'create mask=0777' >> /etc/samba/smb.conf
+sudo echo 'directory mask=0777' >> /etc/samba/smb.conf
+sudo echo 'public=no' >> /etc/samba/smb.conf
 
+#Set samba password
+sudo smbpasswd -a pi
+sudo service smbd restart
+
+#Setup my Pi Kiosk
+sudo apt-get purge scratch scratch2 nuscratch sonic-pi idle3 -y
+sudo apt-get purge smartsim java-common -y
+sudo apt-get clean
+sudo apt-get autoremove -y
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install xdotool unclutter sed
+sudo raspi-config
+
+#Create Kiosk script
+nano /home/pi/kiosk.sh
+
+sudo echo '#!/bin/bash' >> /home/pi/kiosk.sh
+sudo echo 'xset s noblank' >> /home/pi/kiosk.sh
+sudo echo 'xset s off' >> /home/pi/kiosk.sh
+sudo echo 'xset -dpms' >> /home/pi/kiosk.sh
+sudo echo ' ' >> /home/pi/kiosk.sh
+sudo echo 'unclutter -idle 0.5 -root &' >> /home/pi/kiosk.sh
+sudo echo ' ' >> /home/pi/kiosk.sh
+sudo echo 'sed -i 's/"exited_cleanly":false/"exited_cleanly":true/' /home/pi/.config/chromium/Default/Preferences' >> /home/pi/kiosk.sh
+sudo echo 'sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' /home/pi/.config/chromium/Default/Preferences' >> /home/pi/kiosk.sh
+sudo echo ' ' >> /home/pi/kiosk.sh
+sudo echo '/usr/bin/chromium-browser --noerrdialogs --disable-infobars --kiosk --incognito https://datastudio.google.com/embed/reporting/d4fbfe6c-fdf1-41f7-a4f6-a972959261eb/page/a5o1 https://datastudio.google.com/embed/reporting/6627889d-3abc-4cb9-8e1a-ec3ba3fe8646/page/a5o1 https://datastudio.google.com/embed/reporting/84984260-6b53-429b-a5b5-7921996a8b57/page/a5o1 https://datastudio.google.com/embed/reporting/cd30b870-6f63-4dd2-9ed6-6eada083d4b9/page/a5o1 https://datastudio.google.com/embed/reporting/46b0b8e2-3e54-4239-bda8-9fdd3a4f6393/page/a5o1 &' >> /home/pi/kiosk.sh
+sudo echo ' ' >> /home/pi/kiosk.sh
+sudo echo 'while true; do' >> /home/pi/kiosk.sh
+sudo echo '   xdotool keydown ctrl+Tab; xdotool keyup ctrl+Tab;' >> /home/pi/kiosk.sh
+sudo echo '   sleep 10' >> /home/pi/kiosk.sh
+sudo echo 'done' >> /home/pi/kiosk.sh
+echo $DISPLAY
+
+sudo echo '[Unit]' >> /lib/systemd/system/kiosk.service
+sudo echo 'Description=Chromium Kiosk' >> /lib/systemd/system/kiosk.service
+sudo echo 'Wants=graphical.target' >> /lib/systemd/system/kiosk.service
+sudo echo 'After=graphical.target' >> /lib/systemd/system/kiosk.service
+sudo echo ' ' >> /lib/systemd/system/kiosk.service
+sudo echo '[Service]' >> /lib/systemd/system/kiosk.service
+sudo echo 'Environment=DISPLAY=:0.0' >> /lib/systemd/system/kiosk.service
+sudo echo 'Environment=XAUTHORITY=/home/pi/.Xauthority' >> /lib/systemd/system/kiosk.service
+sudo echo 'Type=simple' >> /lib/systemd/system/kiosk.service
+sudo echo 'ExecStart=/bin/bash /home/pi/kiosk.sh' >> /lib/systemd/system/kiosk.service
+sudo echo 'Restart=on-abort' >> /lib/systemd/system/kiosk.service
+sudo echo 'User=pi' >> /lib/systemd/system/kiosk.service
+sudo echo 'Group=pi' >> /lib/systemd/system/kiosk.service
+sudo echo ' ' >> /lib/systemd/system/kiosk.service
+sudo echo '[Install]' >> /lib/systemd/system/kiosk.service
+sudo echo 'WantedBy=graphical.target' >> /lib/systemd/system/kiosk.service
+
+#Enable Kiosk Service
+sudo systemctl enable kiosk.service
+
+#Start Kiosk Service
+sudo systemctl start kiosk.service
+
+#sudo systemctl status kiosk.service
+#sudo systemctl restart kiosk.service
+#sudo systemctl disable kiosk.service
 
