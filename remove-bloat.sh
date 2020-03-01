@@ -61,7 +61,7 @@ sudo touch /home/pi/kiosk.sh
 #sudo chmod +x /home/pi/kiosk.sh
 
 printf "### CREATED kiosk.sh Script ####\n"
-cp /home/pi/smb.conf /tmp/
+cp /home/pi/kiosk.sh /tmp/
 sudo echo '#!/bin/bash' >> /tmp/kiosk.sh
 sudo echo 'xset s noblank' >> /tmp/kiosk.sh
 sudo echo 'xset s off' >> /tmp/kiosk.sh
