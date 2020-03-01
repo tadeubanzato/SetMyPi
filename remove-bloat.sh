@@ -24,18 +24,18 @@ sudo mkdir /home/pi/swap
 
 #Setup share on Samba
 cp /etc/samba/smb.conf /home/pi/swap/
-sudo echo '[global]' >> /home/pi/smb.conf
-sudo echo 'netbios name = Pi' >> /home/pi/smb.conf
-sudo echo 'server string = The Pi File Center' >> /home/pi/smb.conf
-sudo echo 'workgroup = WORKGROUP' >> /home/pi/smb.conf
-sudo echo ' ' >> /home/pi/smb.conf
-sudo echo '[HOMEPI]' >> /home/pi/smb.conf
-sudo echo 'path = /' >> /home/pi/smb.conf
-sudo echo 'comment = No comment' >> /home/pi/smb.conf
-sudo echo 'writeable=Yes' >> /home/pi/smb.conf
-sudo echo 'create mask=0777' >> /home/pi/smb.conf
-sudo echo 'directory mask=0777' >> /home/pi/smb.conf
-sudo echo 'public=no' >> /home/pi/smb.conf
+sudo echo '[global]' >> /home/pi/swap/smb.conf
+sudo echo 'netbios name = Pi' >> /home/pi/swap/smb.conf
+sudo echo 'server string = The Pi File Center' >> /home/pi/swap/smb.conf
+sudo echo 'workgroup = WORKGROUP' >> /home/pi/swap/smb.conf
+sudo echo ' ' >> /home/pi/swap/smb.conf
+sudo echo '[HOMEPI]' >> /home/pi/swap/smb.conf
+sudo echo 'path = /' >> /home/pi/swap/smb.conf
+sudo echo 'comment = No comment' >> /home/pi/swap/smb.conf
+sudo echo 'writeable=Yes' >> /home/pi/swap/smb.conf
+sudo echo 'create mask=0777' >> /home/pi/swap/smb.conf
+sudo echo 'directory mask=0777' >> /home/pi/swap/smb.conf
+sudo echo 'public=no' >> /home/pi/swap/smb.conf
 sudo cp /home/pi/swap/smb.conf /etc/samba/smb.conf 
 
 printf "########## PASSED WRITING SAMBA CONFIG TO /etc/samba/smb.conf\n"
@@ -63,43 +63,43 @@ sudo touch /home/pi/kiosk.sh
 
 printf "### CREATED kiosk.sh Script ####\n"
 cp /home/pi/smb.conf /home/pi/swap/
-sudo echo '#!/bin/bash' >> /home/pi/kiosk.sh
-sudo echo 'xset s noblank' >> /home/pi/kiosk.sh
-sudo echo 'xset s off' >> /home/pi/kiosk.sh
-sudo echo 'xset -dpms' >> /home/pi/kiosk.sh
-sudo echo ' ' >> /home/pi/kiosk.sh
-sudo echo 'unclutter -idle 0.5 -root &' >> /home/pi/kiosk.sh
-sudo echo ' ' >> /home/pi/kiosk.sh
-sudo echo 'sed -i 's/"exited_cleanly":false/"exited_cleanly":true/' /home/pi/.config/chromium/Default/Preferences' >> /home/pi/kiosk.sh
-sudo echo 'sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' /home/pi/.config/chromium/Default/Preferences' >> /home/pi/kiosk.sh
-sudo echo ' ' >> /home/pi/kiosk.sh
+sudo echo '#!/bin/bash' >> /home/pi/swap/kiosk.sh
+sudo echo 'xset s noblank' >> /home/pi/swap/kiosk.sh
+sudo echo 'xset s off' >> /home/pi/swap/kiosk.sh
+sudo echo 'xset -dpms' >> /home/pi/swap/kiosk.sh
+sudo echo ' ' >> /home/pi/swap/kiosk.sh
+sudo echo 'unclutter -idle 0.5 -root &' >> /home/pi/swap/kiosk.sh
+sudo echo ' ' >> /home/pi/swap/kiosk.sh
+sudo echo 'sed -i 's/"exited_cleanly":false/"exited_cleanly":true/' /home/pi/.config/chromium/Default/Preferences' >> /home/pi/swap/kiosk.sh
+sudo echo 'sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' /home/pi/.config/chromium/Default/Preferences' >> /home/pi/swap/kiosk.sh
+sudo echo ' ' >> /home/pi/swap/kiosk.sh
 sudo echo '/usr/bin/chromium-browser --noerrdialogs --disable-infobars --kiosk --incognito https://datastudio.google.com/embed/reporting/d4fbfe6c-fdf1-41f7-a4f6-a972959261eb/page/a5o1 https://datastudio.google.com/embed/reporting/6627889d-3abc-4cb9-8e1a-ec3ba3fe8646/page/a5o1 https://datastudio.google.com/embed/reporting/84984260-6b53-429b-a5b5-7921996a8b57/page/a5o1 https://datastudio.google.com/embed/reporting/cd30b870-6f63-4dd2-9ed6-6eada083d4b9/page/a5o1 https://datastudio.google.com/embed/reporting/46b0b8e2-3e54-4239-bda8-9fdd3a4f6393/page/a5o1 &' >> /home/pi/kiosk.sh
-sudo echo ' ' >> /home/pi/kiosk.sh
-sudo echo 'while true; do' >> /home/pi/kiosk.sh
-sudo echo '   xdotool keydown ctrl+Tab; xdotool keyup ctrl+Tab;' >> /home/pi/kiosk.sh
-sudo echo '   sleep 10' >> /home/pi/kiosk.sh
-sudo echo 'done' >> /home/pi/kiosk.sh
+sudo echo ' ' >> /home/pi/swap/kiosk.sh
+sudo echo 'while true; do' >> /home/pi/swap/kiosk.sh
+sudo echo '   xdotool keydown ctrl+Tab; xdotool keyup ctrl+Tab;' >> /home/pi/swap/kiosk.sh
+sudo echo '   sleep 10' >> /home/pi/swap/kiosk.sh
+sudo echo 'done' >> /home/pi/swap/kiosk.sh
 sudo cp /home/pi/swap/smb.conf /home/pi/
 
 echo $DISPLAY
 
 cp /lib/systemd/system/kiosk.service /home/pi/swap/
-sudo echo '[Unit]' >> /lib/systemd/system/kiosk.service
-sudo echo 'Description=Chromium Kiosk' >> /lib/systemd/system/kiosk.service
-sudo echo 'Wants=graphical.target' >> /lib/systemd/system/kiosk.service
-sudo echo 'After=graphical.target' >> /lib/systemd/system/kiosk.service
-sudo echo ' ' >> /lib/systemd/system/kiosk.service
-sudo echo '[Service]' >> /lib/systemd/system/kiosk.service
-sudo echo 'Environment=DISPLAY=:0.0' >> /lib/systemd/system/kiosk.service
-sudo echo 'Environment=XAUTHORITY=/home/pi/.Xauthority' >> /lib/systemd/system/kiosk.service
-sudo echo 'Type=simple' >> /lib/systemd/system/kiosk.service
-sudo echo 'ExecStart=/bin/bash /home/pi/kiosk.sh' >> /lib/systemd/system/kiosk.service
+sudo echo '[Unit]' >> /home/pi/swap/kiosk.service
+sudo echo 'Description=Chromium Kiosk' >> /home/pi/swap/kiosk.service
+sudo echo 'Wants=graphical.target' >> /home/pi/swap/kiosk.service
+sudo echo 'After=graphical.target' >> /home/pi/swap/kiosk.service
+sudo echo ' ' >> /home/pi/swap/kiosk.service
+sudo echo '[Service]' >> /home/pi/swap/kiosk.service
+sudo echo 'Environment=DISPLAY=:0.0' >> /home/pi/swap/kiosk.service
+sudo echo 'Environment=XAUTHORITY=/home/pi/.Xauthority' >> /home/pi/swap/kiosk.service
+sudo echo 'Type=simple' >> /home/pi/swap/kiosk.service
+sudo echo 'ExecStart=/bin/bash /home/pi/kiosk.sh' >> /home/pi/swap/kiosk.service
 sudo echo 'Restart=on-abort' >> /lib/systemd/system/kiosk.service
-sudo echo 'User=pi' >> /lib/systemd/system/kiosk.service
-sudo echo 'Group=pi' >> /lib/systemd/system/kiosk.service
-sudo echo ' ' >> /lib/systemd/system/kiosk.service
-sudo echo '[Install]' >> /lib/systemd/system/kiosk.service
-sudo echo 'WantedBy=graphical.target' >> /lib/systemd/system/kiosk.service
+sudo echo 'User=pi' >> /home/pi/swap/kiosk.service
+sudo echo 'Group=pi' >> /home/pi/swap/kiosk.service
+sudo echo ' ' >> /home/pi/swap/kiosk.service
+sudo echo '[Install]' >> /home/pi/swap/kiosk.service
+sudo echo 'WantedBy=graphical.target' >> /home/pi/swap/kiosk.service
 sudo cp /home/pi/swap/kiosk.service /lib/systemd/system/
 
 #Enable Kiosk Service
