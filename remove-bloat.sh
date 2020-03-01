@@ -13,7 +13,7 @@ sudo apt-get autoclean -y
 sudo apt-get update
 printf "########## PASSED CLEAN 01\n"
 
-pass="kongo78"
+sudo chmod +x /home/pi/swap/
 # Start Samba Instalation -------------
 # Install Samba
 sudo apt-get install samba samba-common-bin  -y
