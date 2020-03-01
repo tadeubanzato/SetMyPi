@@ -13,7 +13,7 @@ sudo apt-get autoclean -y
 sudo apt-get update
 printf "########## PASSED CLEAN 01\n"
 
-sudo chmod +x /home/pi/swap/
+sudo chmod +x /tmp/
 # Start Samba Instalation -------------
 # Install Samba
 sudo apt-get install samba samba-common-bin  -y
@@ -22,20 +22,20 @@ printf "########## PASSED SAMBA INSTALL\n"
 
 
 #Setup share on Samba
-cp /etc/samba/smb.conf /home/pi/swap/
-sudo echo '[global]' >> /home/pi/swap/smb.conf
-sudo echo 'netbios name = Pi' >> /home/pi/swap/smb.conf
-sudo echo 'server string = The Pi File Center' >> /home/pi/swap/smb.conf
-sudo echo 'workgroup = WORKGROUP' >> /home/pi/swap/smb.conf
-sudo echo ' ' >> /home/pi/swap/smb.conf
-sudo echo '[HOMEPI]' >> /home/pi/swap/smb.conf
-sudo echo 'path = /' >> /home/pi/swap/smb.conf
-sudo echo 'comment = No comment' >> /home/pi/swap/smb.conf
-sudo echo 'writeable=Yes' >> /home/pi/swap/smb.conf
-sudo echo 'create mask=0777' >> /home/pi/swap/smb.conf
-sudo echo 'directory mask=0777' >> /home/pi/swap/smb.conf
-sudo echo 'public=no' >> /home/pi/swap/smb.conf
-sudo cp /home/pi/swap/smb.conf /etc/samba/smb.conf 
+cp /etc/samba/smb.conf /tmp/
+sudo echo '[global]' >> /tmp/smb.conf
+sudo echo 'netbios name = Pi' >> /tmp/smb.conf
+sudo echo 'server string = The Pi File Center' >> /tmp/smb.conf
+sudo echo 'workgroup = WORKGROUP' >> /tmp/smb.conf
+sudo echo ' ' >> /tmp/smb.conf
+sudo echo '[HOMEPI]' >> /tmp/smb.conf
+sudo echo 'path = /' >> /tmp/smb.conf
+sudo echo 'comment = No comment' >> /tmp/smb.conf
+sudo echo 'writeable=Yes' >> /tmp/smb.conf
+sudo echo 'create mask=0777' >> /tmp/smb.conf
+sudo echo 'directory mask=0777' >> /tmp/smb.conf
+sudo echo 'public=no' >> /tmp/smb.conf
+sudo cp /tmp/smb.conf /etc/samba/smb.conf 
 
 printf "########## PASSED WRITING SAMBA CONFIG TO /etc/samba/smb.conf\n"
 printf "########## ADD PASSWORD FOR SAMBA\n"
@@ -61,45 +61,45 @@ sudo touch /home/pi/kiosk.sh
 #sudo chmod +x /home/pi/kiosk.sh
 
 printf "### CREATED kiosk.sh Script ####\n"
-cp /home/pi/smb.conf /home/pi/swap/
-sudo echo '#!/bin/bash' >> /home/pi/swap/kiosk.sh
-sudo echo 'xset s noblank' >> /home/pi/swap/kiosk.sh
-sudo echo 'xset s off' >> /home/pi/swap/kiosk.sh
-sudo echo 'xset -dpms' >> /home/pi/swap/kiosk.sh
-sudo echo ' ' >> /home/pi/swap/kiosk.sh
-sudo echo 'unclutter -idle 0.5 -root &' >> /home/pi/swap/kiosk.sh
-sudo echo ' ' >> /home/pi/swap/kiosk.sh
-sudo echo 'sed -i 's/"exited_cleanly":false/"exited_cleanly":true/' /home/pi/.config/chromium/Default/Preferences' >> /home/pi/swap/kiosk.sh
-sudo echo 'sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' /home/pi/.config/chromium/Default/Preferences' >> /home/pi/swap/kiosk.sh
-sudo echo ' ' >> /home/pi/swap/kiosk.sh
+cp /home/pi/smb.conf /tmp/
+sudo echo '#!/bin/bash' >> /tmp/kiosk.sh
+sudo echo 'xset s noblank' >> /tmp/kiosk.sh
+sudo echo 'xset s off' >> /tmp/kiosk.sh
+sudo echo 'xset -dpms' >> /tmp/kiosk.sh
+sudo echo ' ' >> /tmp/kiosk.sh
+sudo echo 'unclutter -idle 0.5 -root &' >> /tmp/kiosk.sh
+sudo echo ' ' >> /tmp/kiosk.sh
+sudo echo 'sed -i 's/"exited_cleanly":false/"exited_cleanly":true/' /home/pi/.config/chromium/Default/Preferences' >> /tmp/kiosk.sh
+sudo echo 'sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' /home/pi/.config/chromium/Default/Preferences' >> /tmp/kiosk.sh
+sudo echo ' ' >> /tmp/kiosk.sh
 sudo echo '/usr/bin/chromium-browser --noerrdialogs --disable-infobars --kiosk --incognito https://datastudio.google.com/embed/reporting/d4fbfe6c-fdf1-41f7-a4f6-a972959261eb/page/a5o1 https://datastudio.google.com/embed/reporting/6627889d-3abc-4cb9-8e1a-ec3ba3fe8646/page/a5o1 https://datastudio.google.com/embed/reporting/84984260-6b53-429b-a5b5-7921996a8b57/page/a5o1 https://datastudio.google.com/embed/reporting/cd30b870-6f63-4dd2-9ed6-6eada083d4b9/page/a5o1 https://datastudio.google.com/embed/reporting/46b0b8e2-3e54-4239-bda8-9fdd3a4f6393/page/a5o1 &' >> /home/pi/kiosk.sh
-sudo echo ' ' >> /home/pi/swap/kiosk.sh
-sudo echo 'while true; do' >> /home/pi/swap/kiosk.sh
-sudo echo '   xdotool keydown ctrl+Tab; xdotool keyup ctrl+Tab;' >> /home/pi/swap/kiosk.sh
-sudo echo '   sleep 10' >> /home/pi/swap/kiosk.sh
-sudo echo 'done' >> /home/pi/swap/kiosk.sh
-sudo cp /home/pi/swap/smb.conf /home/pi/
+sudo echo ' ' >> /tmp/kiosk.sh
+sudo echo 'while true; do' >> /tmp/kiosk.sh
+sudo echo '   xdotool keydown ctrl+Tab; xdotool keyup ctrl+Tab;' >> /tmp/kiosk.sh
+sudo echo '   sleep 10' >> /tmp/kiosk.sh
+sudo echo 'done' >> /tmp/kiosk.sh
+sudo cp /tmp/smb.conf /home/pi/
 
 echo $DISPLAY
 
-cp /lib/systemd/system/kiosk.service /home/pi/swap/
-sudo echo '[Unit]' >> /home/pi/swap/kiosk.service
-sudo echo 'Description=Chromium Kiosk' >> /home/pi/swap/kiosk.service
-sudo echo 'Wants=graphical.target' >> /home/pi/swap/kiosk.service
-sudo echo 'After=graphical.target' >> /home/pi/swap/kiosk.service
-sudo echo ' ' >> /home/pi/swap/kiosk.service
-sudo echo '[Service]' >> /home/pi/swap/kiosk.service
-sudo echo 'Environment=DISPLAY=:0.0' >> /home/pi/swap/kiosk.service
-sudo echo 'Environment=XAUTHORITY=/home/pi/.Xauthority' >> /home/pi/swap/kiosk.service
-sudo echo 'Type=simple' >> /home/pi/swap/kiosk.service
-sudo echo 'ExecStart=/bin/bash /home/pi/kiosk.sh' >> /home/pi/swap/kiosk.service
-sudo echo 'Restart=on-abort' >> /home/pi/swap/kiosk.service
-sudo echo 'User=pi' >> /home/pi/swap/kiosk.service
-sudo echo 'Group=pi' >> /home/pi/swap/kiosk.service
-sudo echo ' ' >> /home/pi/swap/kiosk.service
-sudo echo '[Install]' >> /home/pi/swap/kiosk.service
-sudo echo 'WantedBy=graphical.target' >> /home/pi/swap/kiosk.service
-sudo cp /home/pi/swap/kiosk.service /lib/systemd/system/
+cp /lib/systemd/system/kiosk.service /tmp/
+sudo echo '[Unit]' >> /tmp/kiosk.service
+sudo echo 'Description=Chromium Kiosk' >> /tmp/kiosk.service
+sudo echo 'Wants=graphical.target' >> /tmp/kiosk.service
+sudo echo 'After=graphical.target' >> /tmp/kiosk.service
+sudo echo ' ' >> /tmp/kiosk.service
+sudo echo '[Service]' >> /tmp/kiosk.service
+sudo echo 'Environment=DISPLAY=:0.0' >> /tmp/kiosk.service
+sudo echo 'Environment=XAUTHORITY=/home/pi/.Xauthority' >> /tmp/kiosk.service
+sudo echo 'Type=simple' >> /tmp/kiosk.service
+sudo echo 'ExecStart=/bin/bash /home/pi/kiosk.sh' >> /tmp/kiosk.service
+sudo echo 'Restart=on-abort' >> /tmp/kiosk.service
+sudo echo 'User=pi' >> /tmp/kiosk.service
+sudo echo 'Group=pi' >> /tmp/kiosk.service
+sudo echo ' ' >> /tmp/kiosk.service
+sudo echo '[Install]' >> /tmp/kiosk.service
+sudo echo 'WantedBy=graphical.target' >> /tmp/kiosk.service
+sudo cp /tmp/kiosk.service /lib/systemd/system/
 
 #Enable Kiosk Service
 sudo systemctl enable kiosk.service
