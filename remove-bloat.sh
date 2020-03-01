@@ -46,7 +46,7 @@ printf "\n\n########## NO SAMBA PASSWORD\n\n"
 sudo service smbd restart
 
 #Setup my Pi Kiosk
-printf "\n\n\n\n########## SETTING KIOSK MODE\n\n\n\n"
+printf "\n\n########## SETTING KIOSK MODE\n\n"
 sudo apt-get purge scratch scratch2 nuscratch sonic-pi idle3 -y
 sudo apt-get purge smartsim java-common -y
 sudo apt-get clean
@@ -57,9 +57,11 @@ sudo apt-get install xdotool unclutter sed  -y
 sudo raspi-config
 
 #Create Kiosk script
-sudo touch /tmp/kiosk.sh
+sudo touch /home/pi/kiosk.sh
 
 printf "### CREATED kiosk.sh Script ####\n"
+sudo cp /home/pi/kiosk.sh /tmp/
+
 sudo echo '#!/bin/bash' >> /tmp/kiosk.sh
 sudo echo 'xset s noblank' >> /tmp/kiosk.sh
 sudo echo 'xset s off' >> /tmp/kiosk.sh
