@@ -93,7 +93,7 @@ sudo echo 'Environment=DISPLAY=:0.0' >> /home/pi/swap/kiosk.service
 sudo echo 'Environment=XAUTHORITY=/home/pi/.Xauthority' >> /home/pi/swap/kiosk.service
 sudo echo 'Type=simple' >> /home/pi/swap/kiosk.service
 sudo echo 'ExecStart=/bin/bash /home/pi/kiosk.sh' >> /home/pi/swap/kiosk.service
-sudo echo 'Restart=on-abort' >> /lib/systemd/system/kiosk.service
+sudo echo 'Restart=on-abort' >> /home/pi/swap/kiosk.service
 sudo echo 'User=pi' >> /home/pi/swap/kiosk.service
 sudo echo 'Group=pi' >> /home/pi/swap/kiosk.service
 sudo echo ' ' >> /home/pi/swap/kiosk.service
