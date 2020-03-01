@@ -17,7 +17,7 @@ sudo apt-get update
 sudo apt-get install samba samba-common-bin
 
 #MK Dir Share
-mkdir ~/Share
+#mkdir ~/Share
 
 #Setup share on Samba
 sudo echo '[global]' >> /etc/samba/smb.conf
