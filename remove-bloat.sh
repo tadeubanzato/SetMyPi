@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/remove-bloat.sh | bash
 # Remove bloatware (Wolfram Engine, Libre Office, Minecraft Pi, sonic-pi dillo gpicview penguinspuzzle)
 sudo apt-get remove --purge libreoffice* minecraft-pi sonic-pi dillo gpicview penguinspuzzle -y
 
