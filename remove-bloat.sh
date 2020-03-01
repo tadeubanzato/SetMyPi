@@ -19,7 +19,8 @@ pass="kongo78"
 sudo apt-get install samba samba-common-bin  -y
 
 printf "########## PASSED SAMBA INSTALL\n"
-sudo echo "$pass"; echo "$pass" | smbpasswd -s -a $SUDO_USER
+sudo echo "kongo78"
+sudo echo "kongo78"  | smbpasswd -s -a #$SUDO_USER
 #MK Dir Share
 #mkdir ~/Share
 
