@@ -20,7 +20,7 @@ sudo apt-get install samba samba-common-bin  -y
 
 printf "########## PASSED SAMBA INSTALL\n"
 
-sudo mkdir /home/pi/swap
+#sudo mkdir /home/pi/swap
 
 #Setup share on Samba
 cp /etc/samba/smb.conf /home/pi/swap/
