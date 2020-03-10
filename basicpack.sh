@@ -12,10 +12,11 @@
 #
 # # Update and Upgrade Distribution
 # sudo apt-get update && sudo apt-get dist-upgrade
-
+# sleep 3
 # Start Samba Instalation -------------
-sudo apt-get install samba samba-common-bin  -y
-sudo curl -OL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/smb.conf /etc/samba/smb.conf
+#sudo apt-get install samba samba-common-bin  -y
+cd /tmp/ && curl -OL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/smb.conf
+sudo cp /tmp/smb.conf /etc/samba/smb.conf
 
 # printf "########## PASSED SAMBA INSTALL\n"
 #
