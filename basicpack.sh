@@ -1,5 +1,7 @@
 #!/bin/bash
-#sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/remove-bloat.sh | bash
+#Run command will clean up the pi and add the Samba server configs
+#sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/basicpack.sh | bash
+
 # Remove bloatware (Wolfram Engine, Libre Office, Minecraft Pi, sonic-pi dillo gpicview penguinspuzzle)
 sudo apt-get remove --purge libreoffice* minecraft-pi sonic-pi dillo gpicview penguinspuzzle -y
 
@@ -37,11 +39,10 @@ sudo echo 'directory mask=0777' >> /tmp/smb.conf
 sudo echo 'public=no' >> /tmp/smb.conf
 sudo cp /tmp/smb.conf /etc/samba/smb.conf 
 
-printf "########## PASSED WRITING SAMBA CONFIG TO /etc/samba/smb.conf\n"
-printf "########## ADD PASSWORD FOR SAMBA\n"
-
 #Set samba password
-#sudo smbpasswd -a pi
+sudo smbpasswd -a pi
+
+
 printf "\n\n########## NO SAMBA PASSWORD\n\n"
 sudo service smbd restart
 
