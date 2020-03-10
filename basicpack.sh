@@ -14,7 +14,7 @@
 # sudo apt-get update && sudo apt-get dist-upgrade
 # sleep 3
 # Start Samba Instalation -------------
-#sudo apt-get install samba samba-common-bin  -y
+sudo apt-get install samba samba-common-bin  -y
 cd /tmp/ && curl -OL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/smb.conf
 sudo cp /tmp/smb.conf /etc/samba/smb.conf
 cd /home/pi/
