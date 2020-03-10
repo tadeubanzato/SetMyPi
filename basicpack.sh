@@ -20,9 +20,10 @@ sudo cp /tmp/smb.conf /etc/samba/smb.conf
 cd /home/pi/
 
 printf "#--------> PASSED SAMBA INSTALL\n"
-sleep 1
+sleep 2
 
 sudo smbpasswd -a pi
+read -p
 
 # printf "########## PASSED SAMBA INSTALL\n"
 #
