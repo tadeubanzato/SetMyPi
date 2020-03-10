@@ -11,7 +11,7 @@ sudo apt-get autoremove -y
 sudo apt-get autoclean -y
 #
 # # Update and Upgrade Distribution
-sudo apt-get update #&& sudo apt-get dist-upgrade
+sudo apt-get update && sudo apt-get upgrade #&& sudo apt-get dist-upgrade
 # sleep 3
 # Start Samba Instalation -------------
 sudo apt-get install samba samba-common-bin  -y
