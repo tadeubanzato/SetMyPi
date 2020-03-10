@@ -18,9 +18,12 @@ sudo apt-get install samba samba-common-bin  -y
 cd /tmp/ && curl -OL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/smb.conf
 sudo cp /tmp/smb.conf /etc/samba/smb.conf
 cd /home/pi/
+#sudo smbpasswd -a pi
+#sudo service smbd restart
 
 printf "#--------> PASSED SAMBA INSTALL\n"
 sleep 2
 
-#sudo smbpasswd -a pi
-#sudo service smbd restart
+sudo apt install python3-picamera
+printf "#--------> PASSED PYTHON INSTALL\n"
+sleep 2
