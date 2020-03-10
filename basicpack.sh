@@ -19,24 +19,15 @@ cd /tmp/ && curl -OL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/mast
 sudo cp /tmp/smb.conf /etc/samba/smb.conf
 cd /home/pi/
 
+printf "#--------> PASSED SAMBA INSTALL\n"
+sleep 1
+
+sudo smbpasswd -a pi
+
 # printf "########## PASSED SAMBA INSTALL\n"
 #
 #
-# #Setup share on Samba
-# cp /etc/samba/smb.conf /tmp/
-# sudo echo '[global]' >> /tmp/smb.conf
-# sudo echo 'netbios name = Pi' >> /tmp/smb.conf
-# sudo echo 'server string = The Pi File Center' >> /tmp/smb.conf
-# sudo echo 'workgroup = WORKGROUP' >> /tmp/smb.conf
-# sudo echo ' ' >> /tmp/smb.conf
-# sudo echo '[HOMEPI]' >> /tmp/smb.conf
-# sudo echo 'path = /' >> /tmp/smb.conf
-# sudo echo 'comment = No comment' >> /tmp/smb.conf
-# sudo echo 'writeable=Yes' >> /tmp/smb.conf
-# sudo echo 'create mask=0777' >> /tmp/smb.conf
-# sudo echo 'directory mask=0777' >> /tmp/smb.conf
-# sudo echo 'public=no' >> /tmp/smb.conf
-# sudo cp /tmp/smb.conf /etc/samba/smb.conf
+
 #
 # #Set samba password
 # sudo smbpasswd -a pi
