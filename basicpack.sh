@@ -1,24 +1,22 @@
 #!/bin/bash
 #Run command will clean up the pi and add the Samba server configs
 #sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/basicpack.sh | bash
+#curl -OL https://raw.githubusercontent.com/tadeubanzato/DashPi/blob/master/kiosk.sh
 
 # Remove bloatware (Wolfram Engine, Libre Office, Minecraft Pi, sonic-pi dillo gpicview penguinspuzzle)
 sudo apt-get remove --purge libreoffice* minecraft-pi sonic-pi dillo gpicview penguinspuzzle -y
 
-# Autoremove
+# Autoremove  & Celan
 sudo apt-get autoremove -y
-
-# Clean
 sudo apt-get autoclean -y
 
-# Update
-sudo apt-get update
-printf "########## PASSED CLEAN 01\n"
+# Update and Upgrade Distribution
+sudo apt-get update && sudo apt-get dist-upgrade
 
-sudo chmod +x /tmp/
+
 # Start Samba Instalation -------------
-# Install Samba
 sudo apt-get install samba samba-common-bin  -y
+sudo curl -OL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/smb.conf /etc/samba/smb.conf
 
 printf "########## PASSED SAMBA INSTALL\n"
 
@@ -37,7 +35,7 @@ sudo echo 'writeable=Yes' >> /tmp/smb.conf
 sudo echo 'create mask=0777' >> /tmp/smb.conf
 sudo echo 'directory mask=0777' >> /tmp/smb.conf
 sudo echo 'public=no' >> /tmp/smb.conf
-sudo cp /tmp/smb.conf /etc/samba/smb.conf 
+sudo cp /tmp/smb.conf /etc/samba/smb.conf
 
 #Set samba password
 sudo smbpasswd -a pi
@@ -111,4 +109,3 @@ sudo systemctl start kiosk.service
 #sudo systemctl status kiosk.service
 #sudo systemctl restart kiosk.service
 #sudo systemctl disable kiosk.service
-
