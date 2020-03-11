@@ -27,3 +27,9 @@ sleep 2
 sudo apt install python3-picamera
 printf "#--------> PASSED PYTHON INSTALL\n"
 sleep 2
+#https://www.pivpn.io/
+printf "#--------> Installing PiPVPN from https://www.pivpn.io\n"
+sleep 2
+curl -L https://install.pivpn.io | bash
+printf "#--------> PASSED PIPVPN\n"
+sleep 2
