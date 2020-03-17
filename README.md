@@ -1,9 +1,9 @@
 # Basic Pack install for Raspberry Pi
 This will execute the following steps:
 1. Remove Bloatware
-2. Install and configure Samba to share folder <b>/home/pi</b>
-3. Install NGINX webserver instead of Apache2
-4. Bind <b>/var/www/html</b> to a <b>/home/pi/webserver</b>
+2. Install and configure Samba to share folder <b>/home/pi</b> - install-samba.sh
+3. Install NGINX webserver instead of Apache2 - install-webserver.sh
+4. Bind <b>/var/www/html</b> to a <b>/home/pi/webserver</b> - mount-samba.sh
 
 *To define samba password run `sudo smbpasswd -a pi` and restart service with `sudo service smbd restart`*
 

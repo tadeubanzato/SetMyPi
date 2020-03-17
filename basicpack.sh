@@ -14,31 +14,29 @@ sudo apt-get autoremove -y && sudo apt-get autoclean -y
 
 ## Update and Upgrade Distribution
 sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y
-sleep 3
-
-## Start Samba Instalation -------------
-sudo apt-get install samba samba-common-bin  -y
-cd /tmp/ && curl -OL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/smb.conf
-sudo cp /tmp/smb.conf /etc/samba/smb.conf
-cd /home/pi/
-# Run: sudo smbpasswd -a pi to setup password
-# Run: sudo service smbd restart to restart the service
-
-printf "#--------> PASSED SAMBA INSTALL\n"
 sleep 2
+
+## Install Samba files
+sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/install-samba.sh | bash
+printf "#--------> PASSED SAMBA INSTALL\n"
+sleep 4
 
 ## Install Python
 sudo apt install python3-picamera
 printf "#--------> PASSED PYTHON INSTALL\n"
-sleep 2
-
-## Bind /var/www/html to samba share
-sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/mount_samba.sh | bash
-printf "#--------> BINDED /var/www/html to Samba share\n"
-printf "#--------> You can access over /home/pi/webserver and changes will affect /var/www/html automatically\n"
-sleep 5
+sleep 4
 
 ## Install NGINX as webserver and remove Apache
-sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/installWebserver.sh | bash
+sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/install-webserver.sh | bash
 printf "#--------> PASSED NGINX INSTALL\n"
-sleep 2
+sleep 4
+
+## Bind /var/www/html to samba share
+sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/mount-samba.sh | bash
+printf "#--------> BINDED /var/www/html to Samba share\n"
+sleep 4
+printf "#--------> You can access over /home/pi/webserver and changes will affect /var/www/html automatically\n"
+sleep 6
+
+## Run update once finished
+sudo apt-get update
