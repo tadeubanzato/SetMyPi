@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Create a folder and bind it to the /var/www/html folder
 sudo mkdir -p /home/pi/webserver
