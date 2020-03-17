@@ -3,9 +3,11 @@ This will execute the following steps:
 1. Remove Bloatware
 2. Install and configure Samba to share folder /home/pi
 3. Install NGINX webserver instead of Apache2
-4. Bind /var/www/html to a /home/pi/webserver
+4. Bind <b>/var/www/html</b> to a <b>/home/pi/webserver</b>
 
-To run this scripts automatically from GitHub just run the following command on shell
+*To define samba password run `sudo smbpasswd -a pi`*
+
+To run this scripts automatically from GitHub just run the following command on shell </br>
 `sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/basicpack.sh | bash`
 
 # Remove Bloatware on the Raspberry Pi
