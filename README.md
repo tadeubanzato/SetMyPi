@@ -1,18 +1,26 @@
+# Basic Pack install for Raspberry Pi
+This will execute the following steps:
+1. Remove Bloatware
+2. Install and configure Samba to share folder /home/pi
+3. Install NGINX webserver instead of Apache2
+4. Bind /var/www/html to a /home/pi/webserver
+
+To run this scripts automatically from GitHub just run the following command on shell
+`sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/basicpack.sh | bash`
+
 # Remove Bloatware on the Raspberry Pi
 Remove bloatware from Raspberry Pi Raspbian with one script. This will remove the storage hogging programs and some other often never-used tools including:
 
 1. Wolfram Engine
 2. LibreOffice
 3. Minecraft Pi
-4. Sonic Pi 
+4. Sonic Pi
 5. Dillo Web Broswer (dillo)
 6. Image Viewer (gpicview)
 7. Penguines Puzzle (penguinspuzzle)
 8. Java (oracle-java8-jdk openjdk-7-jre oracle-java7-jdk openjdk-8-jre)
 
 The script will then `autoremove`, `autoclean` and then `update` the aptitude pacakges on the Pi itself.
-
-## Installation
 
 ### Automatic
 Run the following command within the Raspberry Pi terminal:
