@@ -26,10 +26,10 @@ sudo apt install python3-picamera -y
 printf "\n\n#--------> PASSED PYTHON INSTALL\n\n"
 sleep 4
 
-## Install NGINX as webserver and remove Apache
-sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/install-webserver.sh | bash
-printf "\n\n#--------> PASSED NGINX INSTALL\n\n"
-sleep 4
+# ## Install NGINX as webserver and remove Apache
+# sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/install-webserver.sh | bash
+# printf "\n\n#--------> PASSED NGINX INSTALL\n\n"
+# sleep 4
 
 # ## Bind /var/www/html to samba share
 # sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/mount-samba.sh | bash
