@@ -1,5 +1,5 @@
 #!/bin/bash
-
+printf "\n\n${YELLOW}--------> START BINDING Samba Share${NC}\n\n"
 # Create a folder and bind it to the /var/www/html folder
 sudo mkdir -p /home/pi/webserver
 
