@@ -6,6 +6,8 @@
 ## Download GitHub kiosk.sh file:
 ## curl -OL https://raw.githubusercontent.com/tadeubanzato/DashPi/blob/master/kiosk.sh
 
+sudo raspi-config
+
 ## Remove bloatware (Wolfram Engine, Libre Office, Minecraft Pi, sonic-pi dillo gpicview penguinspuzzle)
 sudo apt-get remove --purge libreoffice* minecraft-pi sonic-pi dillo gpicview penguinspuzzle -y
 
@@ -25,7 +27,16 @@ sleep 4
 ## Install Python
 printf "\n\n#--------> STARTING PYTHON INSTALL\n\n"
 sudo apt install python3-picamera -y
+sudo apt-get install python-pip -y
+sudo apt-get install python-dev -y
+sudo apt-get install python-rpi.gpio -y
 printf "\n\n#--------> PASSED PYTHON INSTALL\n\n"
+sleep 4
+
+## Install Git
+printf "\n\n#--------> STARTING GIT INSTALL\n\n"
+sudo apt-get install git -y
+printf "\n\n#--------> PASSED GIT INSTALL\n\n"
 sleep 4
 
 ## Install NGINX as webserver and remove Apache
