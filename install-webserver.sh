@@ -1,7 +1,8 @@
 #!/bin/bash
 
 ## Remove Apache
-sudo apt-get remove apache2
+sudo apt-get remove apache*
+sudo apt-get autoremove
 
 ## Install NGINX from repository and start NGINX
 sudo apt-get install nginx
