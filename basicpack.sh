@@ -31,10 +31,7 @@ sleep 4
 
 ## Install Python
 printf "\n\n${YELLOW}--------> STARTING PYTHON INSTALL${NC}\n\n"
-sudo apt install python3-picamera -y
-sudo apt-get install python-pip -y
-sudo apt-get install python-dev -y
-sudo apt-get install python-rpi.gpio -y
+sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/install-python.sh | bash
 printf "\n\n${GREEN}--------> PASSED PYTHON INSTALL${NC}\n\n"
 sleep 4
 
@@ -55,7 +52,7 @@ printf "\n\n${YELLOW}--------> START BINDING Samba Share${NC}\n\n"
 sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/mount-samba.sh | bash
 printf "\n\n${GREEN}--------> BINDED /var/www/html to Samba share${NC}\n\n"
 sleep 4
-printf "\n\n${BLUE}--------> You can access over /home/pi/webserver and changes will affect /var/www/html automatically${NC}\n\n"
+printf "\n${BLUE}--------> You can access over /home/pi/webserver and changes will affect /var/www/html automatically${NC}\n"
 sleep 6
 
 ## Run update once finished
