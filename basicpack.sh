@@ -23,35 +23,35 @@ sudo apt-get autoremove -y && sudo apt-get autoclean -y
 sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y
 
 ## Install Samba files
-printf "\n\n${YELLOW}--------> STARTING SAMBA INSTALL${NC}\n\n"
+printf "\n\n ${YELLOW}--------> STARTING SAMBA INSTALL${NC}\n\n"
 sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/install-samba.sh | bash
-printf "\n\n${GREEN}--------> PASSED SAMBA INSTALL${NC}\n\n"
+printf "\n\n ${GREEN}--------> PASSED SAMBA INSTALL${NC}\n\n"
 sleep 4
 
 ## Install Python
-printf "\n\n${YELLOW}--------> STARTING PYTHON INSTALL${NC}\n\n"
+printf "\n\n ${YELLOW}--------> STARTING PYTHON INSTALL${NC}\n\n"
 sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/install-python.sh | bash
-printf "\n\n${GREEN}--------> PASSED PYTHON INSTALL${NC}\n\n"
+printf "\n\n ${GREEN}--------> PASSED PYTHON INSTALL${NC}\n\n"
 sleep 4
 
 ## Install Git
-printf "\n\n${YELLOW}--------> STARTING GIT INSTALL${NC}\n\n"
+printf "\n\n ${YELLOW}--------> STARTING GIT INSTALL${NC}\n\n"
 sudo apt-get install git -y
-printf "\n\n${GREEN}--------> PASSED GIT INSTALL${NC}\n\n"
+printf "\n\n ${GREEN}--------> PASSED GIT INSTALL${NC}\n\n"
 sleep 4
 
 ## Install NGINX as webserver and remove Apache
-printf "\n\n${YELLOW}--------> STARTING NGINX INSTALL${NC}\n\n"
+printf "\n\n ${YELLOW}--------> STARTING NGINX INSTALL${NC}\n\n"
 sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/install-webserver.sh | bash
-printf "\n\n${GREEN}--------> PASSED NGINX INSTALL${NC}\n\n"
+printf "\n\n ${GREEN}--------> PASSED NGINX INSTALL${NC}\n\n"
 sleep 4
 
 ## Bind /var/www/html to samba share
-printf "\n\n${YELLOW}--------> START BINDING Samba Share${NC}\n\n"
+printf "\n\n ${YELLOW}--------> START BINDING Samba Share${NC}\n\n"
 sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/mount-samba.sh | bash
-printf "\n\n${GREEN}--------> BINDED /var/www/html to Samba share${NC}\n\n"
+printf "\n\n ${GREEN}--------> BINDED /var/www/html to Samba share${NC}\n\n"
 sleep 4
-printf "\n${BLUE}--------> You can access over /home/pi/webserver and changes will affect /var/www/html automatically${NC}\n"
+printf "\n ${BLUE}--------> You can access over /home/pi/webserver and changes will affect /var/www/html automatically${NC}\n"
 sleep 6
 
 ## Run update once finished
