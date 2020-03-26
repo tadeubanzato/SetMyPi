@@ -55,4 +55,4 @@ printf "\n ${BLUE}--------> You can access over /home/pi/webserver and changes w
 sleep 6
 
 ## Run update once finished
-sudo apt-get update && sudo apt-get upgrade
+sudo apt-get update && sudo apt-get full-upgrade
