@@ -51,6 +51,9 @@ printf "\n\n ${YELLOW}--------> START BINDING Samba Share${NC}\n\n"
 sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/mount-samba.sh | bash
 printf "\n\n ${GREEN}--------> BINDED /var/www/html to Samba share${NC}\n\n"
 sleep 4
+
+sudo apt install curl openssh-server ca-certificates apt-transport-https postfix -y
+
 printf "\n ${BLUE}--------> You can access over /home/pi/webserver and changes will affect /var/www/html automatically${NC}\n"
 sleep 6
 
