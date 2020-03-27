@@ -17,7 +17,7 @@ echo "alias python=/usr/local/bin/python3.8" >> ~/.bashrc
 source ~/.bashrc
 
 
-
+printf "\n\n ${YELLOW}--------> INSTALLING PYTHON MODULES ${NC}\n\n"
 
 ## Install Tweepy
 pip install tweepy
