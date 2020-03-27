@@ -8,34 +8,33 @@ sudo apt-get install build-essential checkinstall tk-dev libncurses5-dev libread
 printf "\n\n ${YELLOW}--------> DOWNLOADING PYTHON 3.8.2 ${NC}\n\n"
 wget https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tgz
 sudo tar zxf Python-3.8.2.tgz
-cd Python-3.8.2
-printf "\n\n ${YELLOW}--------> CONFIGURING PYTHON 3.8.2 AS STANDARD ${NC}\n\n"
+cd /home/pi/Python-3.8.2/
 sudo ./configure --enable-optimizations
+printf "\n\n ${YELLOW}--------> CONFIGURING PYTHON 3.8.2 AS STANDARD ${NC}\n\n"
 sudo make -j 4
 sudo make altinstall
 echo "alias python=/usr/local/bin/python3.8" >> ~/.bashrc
 source ~/.bashrc
 
-
 printf "\n\n ${YELLOW}--------> INSTALLING PYTHON MODULES ${NC}\n\n"
 
 ## Install Tweepy
-pip install tweepy
+pip install tweepy logging django oauth2client gspread requests pprint
 
-## Install Logging
-pip install logging
-
-## Install Djangoe
-pip install django
-
-## Install oAuth for Google API
-pip install oauth2client
-
-## Install gspread to use with Google Sheets API
-pip install gspread
-
-## Install requests to use with WebHook
-pip install requests
-
-## Install oAuth to use with WebHook
-pip install pprint
+# ## Install Logging
+# pip install logging
+#
+# ## Install Djangoe
+# pip install django
+#
+# ## Install oAuth for Google API
+# pip install oauth2client
+#
+# ## Install gspread to use with Google Sheets API
+# pip install gspread
+#
+# ## Install requests to use with WebHook
+# pip install requests
+#
+# ## Install oAuth to use with WebHook
+# pip install pprint

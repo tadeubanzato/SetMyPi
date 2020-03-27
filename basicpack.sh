@@ -26,11 +26,11 @@ sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/in
 printf "\n\n ${GREEN}--------> PASSED SAMBA INSTALL${NC}\n\n"
 sleep 4
 
-## Install Python 3.8.2
-printf "\n\n ${YELLOW}--------> STARTING PYTHON INSTALL${NC}\n\n"
-sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/install-python.sh | bash
-printf "\n\n ${GREEN}--------> PASSED PYTHON INSTALL${NC}\n\n"
-sleep 4
+# ## Install Python 3.8.2
+# printf "\n\n ${YELLOW}--------> STARTING PYTHON INSTALL${NC}\n\n"
+# sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/install-python.sh | bash
+# printf "\n\n ${GREEN}--------> PASSED PYTHON INSTALL${NC}\n\n"
+# sleep 4
 
 ## Install Git
 printf "\n\n ${YELLOW}--------> STARTING GIT INSTALL${NC}\n\n"
