@@ -55,5 +55,7 @@ sudo apt install curl openssh-server ca-certificates apt-transport-https postfix
 printf "\n ${BLUE}--------> You can access over /home/pi/webserver and changes will affect /var/www/html automatically${NC}\n"
 sleep 6
 
+sudo git clone https://github.com/tadeubanzato/talkei.git
+
 ## Run update once finished
 sudo apt-get update && sudo apt-get full-upgrade
