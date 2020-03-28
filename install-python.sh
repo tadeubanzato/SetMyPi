@@ -22,6 +22,8 @@ sudo make altinstall
 echo "alias python=/usr/local/bin/python3.8" >> ~/.bashrc
 source ~/.bashrc
 
+sudo apt install idle3
+
 printf "\n\n ${YELLOW}--------> INSTALLING PYTHON MODULES ${NC}\n\n"
 
 ## Install Tweepy
