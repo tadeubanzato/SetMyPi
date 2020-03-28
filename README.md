@@ -39,4 +39,6 @@ git clone git://github.com/raspberrycoulis/remove-bloat.git
 cd remove-bloat
 sudo chmod +x remove-bloat.sh
 sudo ./remove-bloat.sh
+
+rm -rf your_directory/*
 ```
