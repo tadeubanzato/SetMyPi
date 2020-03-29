@@ -26,12 +26,6 @@ sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/in
 printf "\n\n ${GREEN}--------> PASSED SAMBA INSTALL${NC}\n\n"
 sleep 4
 
-## Install Python 3.8.2
-printf "\n\n ${YELLOW}--------> STARTING PYTHON INSTALL${NC}\n\n"
-sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/install-python.sh | bash
-printf "\n\n ${GREEN}--------> PASSED PYTHON INSTALL${NC}\n\n"
-sleep 4
-
 ## Install Git
 printf "\n\n ${YELLOW}--------> STARTING GIT INSTALL${NC}\n\n"
 sudo apt-get install git -y
@@ -49,6 +43,12 @@ printf "\n\n ${YELLOW}--------> START BINDING Samba Share${NC}\n\n"
 sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/mount-samba.sh | bash
 printf "\n\n ${GREEN}--------> BINDED /var/www/html to Samba share${NC}\n\n"
 sleep 4
+
+# ## Install Python 3.7
+# printf "\n\n ${YELLOW}--------> STARTING PYTHON INSTALL${NC}\n\n"
+# sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/install-python.sh | bash
+# printf "\n\n ${GREEN}--------> PASSED PYTHON INSTALL${NC}\n\n"
+# sleep 4
 
 sudo apt install curl openssh-server ca-certificates apt-transport-https postfix -y
 
