@@ -15,7 +15,8 @@ printf "\n\n ${YELLOW}--------> INSTALLING PYTHON 3.7 ${NC}\n\n"
 sudo apt install python3 idle3
 
 printf "\n\n ${YELLOW}--------> INSTALLING PYTHON MODULES ${NC}\n\n"
-pip install tweepy logging django oauth2client gspread requests pprint
+sudo apt install python3-pip
+
 
 # ## Install Logging
 # pip install logging
