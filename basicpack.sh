@@ -61,5 +61,20 @@ sleep 6
 sudo git clone https://github.com/tadeubanzato/talkei.git
 sudo git clone https://github.com/tadeubanzato/youtubeTester.git
 
+sudo apt remove --purge nodejs npm
+sudo apt clean
+sudo apt autoclean
+sudo apt install -f
+sudo apt autoremove
+sudo apt install curl
+
+cd ~
+
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+sudo apt-get install -y nodejs
+curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+sudo apt-get update && sudo apt-get install yarn
+nodejs -v && npm -v
+
 ## Run update once finished
 sudo apt-get update && sudo apt-get full-upgrade
