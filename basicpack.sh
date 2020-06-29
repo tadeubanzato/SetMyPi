@@ -29,6 +29,9 @@ sleep 4
 ## Install Git
 printf "\n\n ${YELLOW}--------> STARTING GIT INSTALL${NC}\n\n"
 sudo apt-get install git -y
+git config --global user.name "Tadeu Banzato"
+git config --global user.email "tadeubanzato@gmail.com"
+git config --global core.editor nano
 printf "\n\n ${GREEN}--------> PASSED GIT INSTALL${NC}\n\n"
 sleep 4
 

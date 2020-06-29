@@ -17,26 +17,8 @@ sudo apt install python3-pip
 
 printf "\n\n ${YELLOW}--------> INSTALLING PYTHON MODULES ${NC}\n\n"
 
-# ## Install Logging
-# pip3 install logging
-
-# ## Install Djangoe
-# pip3 install django
-
-# ## Install oAuth for Google API
-# pip3 install oauth2client
-
-# ## Install gspread to use with Google Sheets API
-# pip3 install gspread
-
-# ## Install requests to use with WebHook
-# pip3 install requests
-
-# ## Install oAuth to use with WebHook
-# pip3 install pprint
-
 # ## Install LibAtlas
-# sudo apt-get install libatlas-base-dev
+sudo apt-get install libatlas-base-dev
 
 # ## Install Pandas
 # pip3 install pandas

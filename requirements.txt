@@ -1,0 +1,16 @@
+certifi
+chardet
+html5lib
+idna
+mechanize
+PySocks
+requests
+six
+urllib3
+webencodings
+logging
+django
+oauth2client
+gspread
+pprint
+pandas
