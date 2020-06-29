@@ -12,13 +12,13 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # ## Remove bloatware (Wolfram Engine, Libre Office, Minecraft Pi, sonic-pi dillo gpicview penguinspuzzle)
-# sudo apt-get remove --purge libreoffice* minecraft-pi sonic-pi dillo gpicview penguinspuzzle -y
+sudo apt-get remove --purge libreoffice* minecraft-pi sonic-pi dillo gpicview penguinspuzzle -y
 #
 # ## Autoremove  & Celan
-# sudo apt-get autoremove -y && sudo apt-get autoclean -y
+sudo apt-get autoremove -y && sudo apt-get autoclean -y
 
 ## Update and Upgrade Distribution
-sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y
+#sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y
 
 ## Install Samba files
 printf "\n\n ${YELLOW}--------> STARTING SAMBA INSTALL${NC}\n\n"
