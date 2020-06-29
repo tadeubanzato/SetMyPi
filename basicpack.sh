@@ -48,10 +48,10 @@ printf "\n\n ${GREEN}--------> BINDED /var/www/html to Samba share${NC}\n\n"
 sleep 4
 
 # ## Install Python 3.7
-# printf "\n\n ${YELLOW}--------> STARTING PYTHON INSTALL${NC}\n\n"
-# sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/install-python.sh | bash
-# printf "\n\n ${GREEN}--------> PASSED PYTHON INSTALL${NC}\n\n"
-# sleep 4
+printf "\n\n ${YELLOW}--------> STARTING PYTHON INSTALL${NC}\n\n"
+sudo curl -fsSL https://raw.githubusercontent.com/tadeubanzato/SetMyPi/master/install-python.sh | bash
+printf "\n\n ${GREEN}--------> PASSED PYTHON INSTALL${NC}\n\n"
+sleep 4
 
 sudo apt install curl openssh-server ca-certificates apt-transport-https postfix -y
 
@@ -59,6 +59,7 @@ printf "\n ${BLUE}--------> You can access over /home/pi/webserver and changes w
 sleep 6
 
 sudo git clone https://github.com/tadeubanzato/talkei.git
+sudo git clone https://github.com/tadeubanzato/youtubeTester.git
 
 ## Run update once finished
 sudo apt-get update && sudo apt-get full-upgrade
