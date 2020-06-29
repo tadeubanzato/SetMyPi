@@ -21,4 +21,5 @@ printf "\n\n ${YELLOW}--------> INSTALLING PYTHON MODULES ${NC}\n\n"
 sudo apt-get install libatlas-base-dev
 
 # ## Install Requirements
-pip3 install -r https://github.com/tadeubanzato/SetMyPi/blob/master/requirements.txt
+curl -OL https://github.com/tadeubanzato/SetMyPi/blob/master/requirements.txt
+pip3 install -r requirements.txt
