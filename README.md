@@ -42,3 +42,8 @@ sudo ./remove-bloat.sh
 
 rm -rf your_directory/*
 ```
+
+TOR Server Configuration
+
+sudo systemctl status tor@default.service
+sudo systemctl restart tor@default.service
